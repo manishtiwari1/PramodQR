@@ -15,6 +15,8 @@ namespace PramodQR.Controllers
         //
         // GET: /Home/
 
+        // GET: /Home/
+        // GET: /Home/
         public ActionResult Index()
         {
             return View();
