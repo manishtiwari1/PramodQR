@@ -1,0 +1,181 @@
+﻿
+@{
+    ViewBag.Title = "CreateUser";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $("#btmCreateUser").click(function () {
+            $.post("@Url.Action("CreateUser", "Users")", { data: JSON.stringify("aaaaa") }, function (data) {
+                debugger
+                if (data) {
+                    $("#imgQrCode").attr("src", data);
+                    $("#txtUserProfileName").val(
+                        $("#dropUserTitle").val() + " " + $("#txtFirstName").val() + " " + $("#txtMiddleName").val() + " " + $("#txtLastName").val()
+                    );
+                    $("#txtUserProfileMobile").val($("#txtMobile").val());
+                    $("#txtUserProfileAddress").text(
+                        $("#txtAddres").val() + " ," + $("#txtPincode").val() + ", " + $("#dropCity").val() + ", " + $("#dropstate").val() + ", " + $("#dropCountry").val()
+                    );
+                }
+            });
+        });
+    });
+</script>
+<div class="row">
+
+    <div class="col-lg-4">
+
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">My Profile</h3>
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="row">
+                        <div class="col-auto">
+                            <span class="avatar avatar-xl" style="background-image: url(/demo/faces/female/9.jpg)"></span>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label class="form-label">Full Name</label>
+                                <input class="form-control" placeholder="Name" disabled id="txtUserProfileName">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Address</label>
+                        <textarea class="form-control" rows="5" disabled id="txtUserProfileAddress"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Mobile Number</label>
+                        <input class="form-control" placeholder="Mobile number" disabled id="txtUserProfileMobile">
+                    </div>
+                    <div class="form-group">
+                        <img src="" alt="" style="height:150px;width:150px" id="imgQrCode" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-8">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Users Details</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="form-group col-sm-3 col-md-3">
+                        <label class="form-label">
+                            Title <span class="form-required">*</span>
+                        </label>
+                        <select class="custom-select" id="dropUserTitle">
+                            <option value="Mrs">Mrs</option>
+                            <option value="Miss">Miss</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-sm-3 col-md-3">
+                        <label class="form-label">
+                            First Name <span class="form-required">*</span>
+                        </label>
+                        <input name="url" type="text" class="form-control" value="" id="txtFirstName">
+                    </div>
+                    <div class="form-group col-sm-3 col-md-3">
+                        <label class="form-label">
+                            Middle Name <span class="form-required">*</span>
+                        </label>
+                        <input name="url" type="text" class="form-control" value="" id="txtMiddleName">
+                    </div>
+                    <div class="form-group col-sm-3 col-md-3">
+                        <label class="form-label">
+                            Last Name <span class="form-required">*</span>
+                        </label>
+                        <input name="url" type="text" class="form-control" value="" id="txtLastName">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-sm-3 col-md-3">
+                        <label class="form-label">
+                            Gender
+                        </label>
+                        <select class="custom-select" id="dropUserGender">
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-sm-3 col-md-3">
+                        <label class="form-label">
+                            Mobile No. <span class="form-required">*</span>
+                        </label>
+                        <input name="mobile" type="number" class="form-control" value="" id="txtMobile">
+                    </div>
+
+                    <div class="form-group col-sm-3 col-md-3">
+                        <label class="form-label">
+                            Email Address
+                        </label>
+                        <input name="Email" type="email" class="form-control" value="" id="txtemaId">
+                    </div>
+
+                    <div class="form-group col-sm-3 col-md-3">
+                        <label class="form-label">
+                            Addar Card No.
+                        </label>
+                        <input name="Addar" type="number" class="form-control" value="" id="txtAddar">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-sm-3 col-md-3">
+                        <label class="form-label">
+                            Counrty <span class="form-required">*</span>
+                        </label>
+                        <select class="custom-select" id="dropCountry">
+                            <option value="India">India</option>
+                            <option value="America">America</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-sm-3 col-md-3">
+                        <label class="form-label">
+                            State <span class="form-required">*</span>
+                        </label>
+                        <select class="custom-select" id="dropstate">
+                            <option value="Maharastra">Maharastra</option>
+                            <option value="Goa">Goa</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-sm-3 col-md-3">
+                        <label class="form-label">
+                            City <span class="form-required">*</span>
+                        </label>
+                        <select class="custom-select" id="dropCity">
+                            <option value="Mumbai">Mumbai</option>
+                            <option value="Navi">Navi Mumbai</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-sm-3 col-md-3">
+                        <label class="form-label">
+                            Pincode <span class="form-required">*</span>
+                        </label>
+                        <input name="Pincode" type="number" class="form-control" value="" id="txtPincode">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-sm-12 col-md-12">
+                        <label class="form-label">
+                            Address <span class="form-required">*</span>
+                        </label>
+                        <textarea id="txtAddres" class="form-group col-sm-12 col-md-12"></textarea>
+                    </div>
+
+                </div>
+            </div>
+            <div class="card-footer text-right">
+                <button type="submit" class="btn btn-primary" id="btmCreateUser">Create User</button>
+            </div>
+        </div>
+    </div>
+
+
+</div>
